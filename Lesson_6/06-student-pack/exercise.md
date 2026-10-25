@@ -50,18 +50,20 @@ Then add 2 to 3 sentences explaining how screens are registered in this lesson s
 ### Part 3: Navigation Action Reflection
 Describe one navigation action you tested.
 
-Include:
-- where the action was triggered
-- what happened on screen
-- how you knew the action worked
+I'm describing the "View Tiles" button on the home screen.
+
+- Where the action was triggered: the `Pressable` labeled "View Tiles" on `index.js`, which calls `router.push("/details")` on press.
+- What happened on screen: tapping it pushed the Details screen on top of the Home screen, replacing the profile layout with the three-tile row and a "Go back" button.
+- How I knew it worked: the screen content fully changed to the Details layout, and pressing "Go back" (which calls `router.back()`) returned me to the exact Home screen I started from, confirming both the push and the back action worked.
 
 ### Part 4: Troubleshooting or Recovery Reasoning
 Choose one issue from [troubleshooting-checklist.md](troubleshooting-checklist.md).
 
-Explain:
-- the likely cause
-- one small fix you would try first
-- what result would show that the fix worked
+I'm choosing Issue 2: "The second screen does not open."
+
+- The likely cause: the pushed path doesn't match the actual route file name, or `details.js` is missing or misnamed.
+- One small fix I would try first: confirm the file is named exactly `details.js` inside `src/app/`, and confirm the `Pressable`'s `onPress` calls `router.push("/details")` with that exact path spelling.
+- What result would show the fix worked: pressing "View Tiles" actually opens the Details screen instead of doing nothing or crashing.
 
 ## Success Criteria
 Strong submissions will:
