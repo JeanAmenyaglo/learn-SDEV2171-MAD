@@ -32,10 +32,17 @@ If you used the instructor recovery app because your own lesson-04 project was n
 ### Part 1: Style Change Review
 Choose three styling changes from your lesson-05 screen.
 
-For each one:
-- name the property or style group you changed
-- describe what changed on screen
-- explain why the result is clearer or easier to use
+**`borderRadius` on the avatar image**
+- What changed on screen: a 150x150 square image now renders as a perfect circle.
+- Why it's clearer: it reads immediately as a profile photo instead of a plain rectangular image, matching what people expect from a profile screen.
+
+**`flexDirection: "row"` + `justifyContent: "space-around"` on `tilesRow`**
+- What changed on screen: the three tiles went from stacking on top of each other (the default) to sitting side by side with even spacing between them.
+- Why it's clearer: a row of evenly spaced options is much easier to scan at a glance than three stacked blocks.
+
+**`padding`, `borderRadius`, and `backgroundColor` on the card and listCard sections**
+- What changed on screen: the heading and body text for each section are grouped inside a rounded, colored surface with breathing room around the text instead of sitting flush against the screen edge.
+- Why it's clearer: the padding and rounded surface visually group related content together and separate it from the sections above and below it.
 
 ### Part 2: React Native Versus Web Assumptions
 Write 4 to 6 sentences explaining:
@@ -43,21 +50,25 @@ Write 4 to 6 sentences explaining:
 - one way React Native styling is different from CSS
 - why parent container styles matter for layout
 
+React Native styling is similar to CSS in the core ideas it uses: padding, margin, colors, font size, and Flexbox all behave with the same vocabulary I'd use in CSS. The biggest difference is syntax and scope: instead of a stylesheet file with selectors that can cascade across a whole page, every style here is a plain JavaScript object defined in `StyleSheet.create` and attached directly to one component through its `style` prop, with no cascading between unrelated components. Parent container styles matter a lot because children inherit their available space and alignment behavior from the parent's Flexbox settings. For example, `tilesRow` sets `flexDirection: "row"`, and that one line on the parent is the only reason the three `tile` children sit side by side instead of stacking — if I had only styled the tiles and left the parent at the default column direction, no amount of styling on the tiles themselves would make them line up horizontally.
+
 ### Part 3: Build Change Reflection
 Describe one styling change you made during the guided build.
 
-Include:
-- where the change was applied
-- what changed visually after you saved
-- why that change helps prepare the project for lesson 06 navigation work
+The change I'm describing is turning `tilesRow` into a horizontal row using `flexDirection: "row"` and `justifyContent: "space-around"`.
+
+- Where the change was applied: the `tilesRow` style, which wraps the three `tile` `View` components.
+- What changed visually after I saved: the three tiles went from stacking vertically (the default column behavior) to sitting side by side with even spacing between them.
+- Why this helps prepare the project for lesson 06 navigation work: having a clear, well-separated row of button-like tiles is exactly the kind of structure that turns into real navigation targets next — each tile already looks and is sized like something tappable, so adding an `onPress` that navigates somewhere is a small next step rather than a redesign.
 
 ### Part 4: Troubleshooting Reasoning
 Choose one issue from [troubleshooting-checklist.md](troubleshooting-checklist.md).
 
-Explain:
-- the likely cause
-- one small fix you would try first
-- what result would show that the fix worked
+I'm choosing Issue 4: "Alignment looks wrong."
+
+- The likely cause: the parent container's `flexDirection` is not what I assumed, or `alignItems`/`justifyContent` got changed on the wrong axis.
+- One small fix I would try first: confirm `tilesRow`'s `flexDirection` is actually `row` and not the default `column`, then adjust `justifyContent` for the row axis and `alignItems` for the cross axis one property at a time instead of guessing both together.
+- What result would show it worked: the tiles line up in a predictable, evenly spaced horizontal row instead of stacking or clustering unevenly.
 
 ## Success Criteria
 Strong submissions will:
