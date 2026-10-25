@@ -52,20 +52,20 @@ package.json — lists installed dependencies (libraries the project needs) and 
 ### Part 3: Visible Code Change
 Describe one change you made in `App.js`.
 
-I changed the original wording to my onw wording and the changes happened instantaneuosly.
+I changed the heading text inside the `ScrollView` from the default Expo starter text to "Hey there, my name is Jean, lets build mobile apps!", and added a new `View` section below it with an "About This App" heading and a short description.
 
-Include:
-- what line or section you changed, such as the title text, subtitle text, checklist text, or a style block
-- what changed in the running app after you saved
-- why this is evidence that your development workflow is working
+- What line or section I changed: the top `Text` element (the heading) and the new `View`/`Text` block right after it.
+- What changed in the running app after I saved: as soon as I saved `App.js`, Expo's fast refresh updated the running app immediately, the new heading and the "About This App" section appeared on screen without me restarting the app or the emulator.
+- Why this is evidence my development workflow is working: the change showing up instantly, with no manual reload, proves the full loop is connected end to end: the file watcher saw the save, the bundler rebuilt the JS, and the development build on the emulator picked up the new bundle automatically.
 
 ### Part 4: Troubleshooting Reasoning
 Choose one issue from [troubleshooting-checklist.md](troubleshooting-checklist.md).
 
-Explain:
-- the likely failing step
-- one small troubleshooting action you would try first
-- what result would tell you whether that action helped
+I'm choosing Issue 6: "You saved App.js, but nothing changed."
+
+- The likely failing step: Step 9 (make one visible edit) — this is the step where fast refresh is supposed to show the change right away.
+- One small troubleshooting action I would try first: confirm I actually edited and saved the `App.js` that belongs to the running project (not a duplicate file open in another tab), then make one much bigger, more obvious change, like swapping the heading for something very different, to rule out the first edit just being too small to notice.
+- What result would tell me if it helped: if the big, obvious change still does not appear, the problem is not that my edit was too subtle, it points to the Metro bundler or dev server needing a restart. If the big change does appear, the real issue was that my original edit was either too easy to miss or was saved to the wrong file.
 
 ## Success Criteria
 Strong submissions will:
